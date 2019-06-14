@@ -1,0 +1,26 @@
+ 
+int sensor = A0; 
+ 
+ 
+int a0value;  
+char light[10];
+ 
+ 
+void setup() {
+ 
+           Serial.begin();
+           Particle.variable("analogvalue", analogvalue);
+    Particle.variable("Stringlum", light);
+}
+ 
+ 
+void loop() {
+ 
+ 
+           a0value = analogRead(sensor);
+    sprintf(light,"%d", analogvalue);
+           Particle.publish("light", light, PRIVATE);
+ 
+ 
+           delay(30000);
+}
